@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H-FND Logo Options</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #0d0f12;
+            color: #fff;
+            padding: 40px;
+            margin: 0;
+        }
+        h1 {
+            color: #c8f542;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo-card {
+            background: #17191d;
+            border: 1px solid #2b2f36;
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            transition: 0.3s;
+        }
+        .logo-card:hover {
+            border-color: #c8f542;
+            box-shadow: 0 0 30px rgba(200, 245, 66, 0.2);
+        }
+        .brand-logo {
+            width: 60px;
+            height: 60px;
+            background-color: #c8f542;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0d0f12;
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+        .brand-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+        @keyframes logoPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(200, 245, 66, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(200, 245, 66, 0.8); }
+        }
+        .label {
+            font-size: 12px;
+            color: #8a8f98;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .desc {
+            font-size: 11px;
+            color: #8a8f98;
+            text-align: center;
+        }
+        /* Full branding preview */
+        .brand-full {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .brand-title h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 0;
+            text-align: left;
+        }
+        .brand-title h1 span { color: #c8f542; }
+        .brand-title p {
+            font-size: 10px;
+            color: #c8f542;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>H-FND LOGO OPTIONS</h1>
+
+    <div class="grid">
+
+        <!-- OPTION 1: Shield + Network Nodes -->
+        <div class="logo-card">
+            <div class="brand-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+                    <circle cx="8" cy="14" r="1" fill="currentColor"/>
+                    <circle cx="16" cy="14" r="1" fill="currentColor"/>
+                    <line x1="12" y1="11" x2="8" y2="14"/>
+                    <line x1="12" y1="11" x2="16" y2="14"/>
+                </svg>
+            </div>
+            <div class="title">Option 1</div>
+            <div class="label">Shield + Network</div>
+            <div class="desc">Security + network monitoring combined</div>
+        </div>
+
+        <!-- OPTION 2: Hexagon + Pulse -->
+        <div class="logo-card">
+            <div class="brand-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 20 7 20 17 12 22 4 17 4 7 12 2"/>
+                    <polyline points="7 12 10 12 11 9 13 15 14 12 17 12"/>
+                </svg>
+            </div>
+            <div class="title">Option 2</div>
+            <div class="label">Hexagon + Pulse</div>
+            <div class="desc">Tech hexagon with heartbeat line</div>
+        </div>
+
+        <!-- OPTION 3: H + Network -->
+        <div class="logo-card">
+            <div class="brand-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <line x1="6" y1="5" x2="6" y2="19"/>
+                    <line x1="14" y1="5" x2="14" y2="19"/>
+                    <line x1="6" y1="12" x2="14" y2="12"/>
+                    <circle cx="19" cy="8" r="1.5" fill="currentColor" stroke="none"/>
+                    <circle cx="19" cy="16" r="1.5" fill="currentColor" stroke="none"/>
+                    <line x1="14" y1="12" x2="19" y2="8" opacity="0.5"/>
+                    <line x1="14" y1="12" x2="19" y2="16" opacity="0.5"/>
+                </svg>
+            </div>
+            <div class="title">Option 3</div>
+            <div class="label">Letter H + Nodes</div>
+            <div class="desc">H with network connection dots</div>
+        </div>
+
+        <!-- OPTION 4: Radar -->
+        <div class="logo-card">
+            <div class="brand-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <circle cx="12" cy="12" r="9"/>
+                    <circle cx="12" cy="12" r="5"/>
+                    <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                    <line x1="12" y1="12" x2="19" y2="5"/>
+                    <line x1="12" y1="12" x2="3" y2="12" opacity="0.4"/>
+                </svg>
+            </div>
+            <div class="title">Option 4</div>
+            <div class="label">Radar Scanner</div>
+            <div class="desc">Cyber threat detection radar</div>
+        </div>
+
+        <!-- OPTION 5: F in Shield -->
+        <div class="logo-card">
+            <div class="brand-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/>
+                    <polyline points="10 8 10 16" stroke-width="2.5"/>
+                    <polyline points="10 8 15 8" stroke-width="2.5"/>
+                    <polyline points="10 12 14 12" stroke-width="2.5"/>
+                </svg>
+            </div>
+            <div class="title">Option 5</div>
+            <div class="label">F in Shield</div>
+            <div class="desc">FND monogram inside shield</div>
+        </div>
+
+        <!-- OPTION 6: Eye + Circuit -->
+        <div class="logo-card">
+            <div class="brand-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                </svg>
+            </div>
+            <div class="title">Option 6</div>
+            <div class="label">Eye + Monitoring</div>
+            <div class="desc">Surveillance/monitoring eye</div>
+        </div>
+
+    </div>
+
+    <!-- FULL BRANDING PREVIEW -->
+    <h1 style="margin-top: 60px;">FULL BRANDING PREVIEW</h1>
+
+    <div class="grid" style="grid-template-columns: 1fr;">
+        <div class="logo-card">
+            <div class="brand-full">
+                <!-- Ganti SVG ni dengan option yang kau suka -->
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <circle cx="12" cy="11" r="1.5" fill="currentColor"/>
+                        <circle cx="8" cy="14" r="1" fill="currentColor"/>
+                        <circle cx="16" cy="14" r="1" fill="currentColor"/>
+                        <line x1="12" y1="11" x2="8" y2="14"/>
+                        <line x1="12" y1="11" x2="16" y2="14"/>
+                    </svg>
+                </div>
+                <div class="brand-title">
+                    <h1>H-<span>FND</span></h1>
+                    <p>HYBRID-FAILURE NETWORK DETECTOR</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

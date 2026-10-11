@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-FND Create User</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0d0f12;
+            --panel-dark: #17191d;
+            --neon-green: #c8f542;
+            --neon-dark: #a8d422;
+            --text-main: #ffffff;
+            --text-muted: #8a8f98;
+            --border-color: #2b2f36;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .flash-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .flash-message {
+            background: rgba(255, 77, 77, 0.2);
+            border: 1px solid #ff4d4d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .flash-message.success {
+            background: rgba(200, 245, 66, 0.2);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+        }
+
+        .register-container {
+            display: flex;
+            width: 90%;
+            max-width: 1000px;
+            height: 90vh;
+            background-color: var(--panel-dark);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .left-panel {
+            flex: 1;
+            background: radial-gradient(circle at center, #1e2128, #0d0f12);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+            background-color: var(--neon-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--bg-dark);
+            font-size: 24px;
+        }
+
+        .brand-title h1 { font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+        .brand-title h1 span { color: var(--neon-green); }
+        .brand-title p { font-size: 12px; color: var(--neon-green); letter-spacing: 1px; margin-top: 5px; }
+
+        .brand-description {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            max-width: 300px;
+        }
+
+        .pi-status-card {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(23, 25, 29, 0.8);
+            border: 1px solid var(--border-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pi-status-icon { font-size: 32px; color: var(--neon-green); }
+        .pi-status-text h4 { font-size: 14px; }
+        .pi-status-text p { font-size: 11px; color: var(--neon-green); display: flex; align-items: center; gap: 5px; margin-top: 4px; }
+        .online-dot { width: 6px; height: 6px; background-color: var(--neon-green); border-radius: 50%; display: inline-block; }
+
+        .right-panel {
+            flex: 1.5;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-wrapper { max-width: 450px; width: 100%; margin: 0 auto; }
+
+        .form-header { text-align: center; margin-bottom: 30px; }
+        .form-header h2 { font-size: 28px; font-weight: 400; letter-spacing: 2px; }
+        .form-header h2 span { font-weight: 700; }
+        .form-header p { color: var(--text-muted); font-size: 14px; margin-top: 5px; }
+
+        .input-group {
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 0 15px;
+            height: 50px;
+            transition: 0.3s;
+        }
+
+        .input-group:focus-within { border-color: var(--neon-green); }
+        .input-group i { color: var(--text-muted); margin-right: 15px; }
+        .input-group input, .input-group select {
+            background: transparent;
+            border: none;
+            color: white;
+            flex-grow: 1;
+            font-size: 14px;
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .input-group select option {
+            background-color: var(--panel-dark);
+            color: var(--text-main);
+        }
+
+        .btn-primary {
+            background-color: var(--neon-green);
+            color: var(--bg-dark);
+            border: none;
+            width: 100%;
+            height: 50px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--neon-dark);
+            box-shadow: 0 5px 15px rgba(200, 245, 66, 0.3);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .login-link a {
+            color: var(--neon-green);
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1000px) {
+            .left-panel { display: none; }
+            .register-container { width: 95%; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container">
+          {% for category, message in messages %}
+            <div class="flash-message {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="register-container">
+
+        <div class="left-panel">
+            <div class="brand-header">
+                <div class="brand-logo"><i class="fa-solid fa-network-wired"></i></div>
+                <div class="brand-title">
+                    <h1>H-<span>FND</span></h1>
+                    <p>HYBRID-FAILURE NETWORK DETECTOR</p>
+                </div>
+            </div>
+
+            <div class="brand-description">
+                Integrated Network Failure Monitoring and Cyber Threat Detection System
+            </div>
+
+            <div class="pi-status-card">
+                <i class="fa-brands fa-raspberry-pi pi-status-icon"></i>
+                <div class="pi-status-text">
+                    <h4>RASPBERRY PI 5</h4>
+                    <p><span class="online-dot"></span> CORE SYSTEM</p>
+                    <p style="color: var(--text-main);">ONLINE & OPERATIONAL</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <h2>CREATE <span>USER</span></h2>
+                    <p>Fill in the details to register a new administrator</p>
+                </div>
+
+                <form action="/create_user" method="POST">
+                    <div class="input-group">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" name="username" placeholder="Username (e.g. dinaAdmin)" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="password" 
+                               placeholder="Password (min 8 characters)" 
+                               minlength="8" 
+                               required>
+                        <i class="fa-regular fa-eye toggle-password" style="cursor: pointer;"></i>
+                    </div>
+
+                    <!-- DROPDOWN ROLE -->
+                    <div class="input-group">
+                        <i class="fa-solid fa-user-tag"></i>
+                        <select name="role" class="form-control" required>
+                            <option value="admin">Admin</option>
+                            <option value="technician">Technician</option>
+                            <option value="super_admin">Super Admin</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <select name="security_question" required>
+                            <option value="" disabled selected>Select a security question</option>
+                            <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                            <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+                            <option value="What is your favourite food?">What is your favourite food?</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="text" name="security_answer" placeholder="Security Answer" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        CREATE ACCOUNT <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="login-link">
+                    Already have an account? <a href="/">Sign In</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    document.querySelectorAll('.toggle-password').forEach(function(icon) {
+        icon.addEventListener('click', function() {
+            const input = this.parentElement.querySelector('input');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        });
+    });
+    </script>
+
+</body>
+</html>

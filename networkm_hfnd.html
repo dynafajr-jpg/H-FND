@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-FND Network Monitoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0d0f12;
+            --panel-dark: #17191d;
+            --panel-border: #2b2f36;
+            --neon-green: #c8f542; 
+            --text-main: #ffffff;
+            --text-muted: #8a8f98;
+            --color-red: #ff4d4d;
+            --color-orange: #ffaa00;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden; 
+        }
+
+        .app-layout { display: grid; grid-template-columns: 80px 1fr; height: 100%; }
+
+        /* ----- SIDEBAR ----- */
+        .sidebar { background-color: var(--panel-dark); border-right: 1px solid var(--panel-border); display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
+        .sidebar-logo { font-size: 28px; color: var(--neon-green); margin-bottom: 40px; }
+        .sidebar-nav { display: flex; flex-direction: column; gap: 20px; flex-grow: 1; }
+        .sidebar-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 18px; color: var(--text-muted); cursor: pointer; transition: 0.3s; text-decoration: none; }
+        .sidebar-icon:hover { color: var(--text-main); background-color: rgba(255,255,255,0.05); }
+        .sidebar-icon.active { background-color: var(--neon-green); color: var(--bg-dark); box-shadow: 0 0 15px rgba(200, 245, 66, 0.4); }
+        .sidebar-bottom { display: flex; flex-direction: column; gap: 20px; }
+
+        /* ----- MAIN CONTENT ----- */
+        .main-content { padding: 30px; overflow-y: auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .header-title h1 { font-size: 22px; font-weight: 600; }
+        .header-title p { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+        
+        .header-chips { display: flex; gap: 10px; }
+        .chip { background-color: var(--panel-dark); border: 1px solid var(--panel-border); padding: 6px 12px; border-radius: 20px; font-size: 11px; display: flex; align-items: center; gap: 6px; }
+        .chip i { color: var(--neon-green); font-size: 8px; }
+
+        /* Layout Grid */
+        .status-grid { display: grid; grid-template-columns: 1.5fr 1.5fr 1fr; gap: 20px; margin-bottom: 20px; }
+
+        .card { background-color: var(--panel-dark); border: 1px solid var(--panel-border); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .card-title { font-size: 13px; font-weight: 600; color: var(--text-main); }
+        .card-link { font-size: 10px; color: var(--neon-green); text-decoration: none; }
+
+        /* Pi Hardware Graphics */
+        .pi-visual {
+            height: 150px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            border: 1px solid var(--panel-border);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .pi-board {
+            width: 70%;
+            height: 60%;
+            background: linear-gradient(135deg, #133c26, #0d2118);
+            border: 2px solid #555;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+        .pi-chip {
+            position: absolute;
+            top: 40%; left: 40%;
+            width: 20%; height: 20%;
+            background: #222;
+            border: 1px solid #555;
+            border-radius: 4px;
+        }
+        .pi-port { position: absolute; width: 10px; height: 20px; background: #333; border-radius: 2px; }
+        .pi-port.usb1 { top: 10%; left: 10%; }
+        .pi-port.usb2 { top: 10%; right: 10%; }
+        .pi-port.eth { bottom: 10%; left: 10%; width: 30px; }
+        .pi-pins { position: absolute; top: 5%; right: 20%; width: 10px; height: 50px; background: repeating-linear-gradient(to bottom, #c8f542 0px, #c8f542 3px, #333 3px, #333 6px); border-radius: 2px; }
+
+        /* Progress Bars */
+        .stat-group { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
+        .stat-item { margin-bottom: 5px; }
+        .stat-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
+        .stat-label span:last-child { font-weight: 600; }
+        .progress-bg { background-color: rgba(255,255,255,0.1); border-radius: 10px; height: 6px; overflow: hidden; }
+        .progress-fill { height: 100%; background-color: var(--neon-green); border-radius: 10px; box-shadow: 0 0 10px rgba(200, 245, 66, 0.5); width: 0%; transition: width 0.5s ease; }
+
+        /* Services List */
+        .service-list { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+        .service-item { display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2); border: 1px solid transparent; padding: 10px; border-radius: 8px; }
+        .service-name { font-size: 12px; display: flex; align-items: center; gap: 8px; }
+        .service-name i { color: var(--text-muted); }
+        .service-status { font-size: 10px; padding: 3px 10px; border-radius: 4px; font-weight: 600; }
+        .service-status.running { color: var(--neon-green); background: rgba(200, 245, 66, 0.15); }
+        .service-status.stopped { color: var(--color-red); background: rgba(255, 77, 77, 0.15); }
+
+        /* Bottom Grid */
+        .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        /* Info Table */
+        .sys-info-list { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
+        .sys-info-item { display: flex; justify-content: space-between; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
+        .sys-info-item span:first-child { color: var(--text-muted); }
+        .sys-info-item span:last-child { font-weight: 600; color: var(--text-muted); }
+
+        /* Status Light for Pi */
+        .pi-status-led {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+        .pi-status-led.online { background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
+        .pi-status-led.offline { background: var(--color-red); box-shadow: 0 0 10px var(--color-red); }
+
+        /* USB Status Styles */
+        .usb-status-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 6px;
+            margin-top: 5px;
+            font-size: 12px;
+        }
+        .usb-status-item .usb-name {
+            color: var(--text-muted);
+        }
+        .usb-status-item .usb-status {
+            font-weight: 600;
+        }
+        .usb-status-item .usb-status.connected {
+            color: var(--neon-green);
+        }
+        .usb-status-item .usb-status.disconnected {
+            color: var(--color-red);
+        }
+        .usb-summary {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 1200px) {
+            .status-grid { grid-template-columns: 1fr; }
+            .bottom-grid { grid-template-columns: 1fr; }
+            .sidebar { width: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-layout">
+    <nav class="sidebar">
+        <div class="sidebar-logo"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="sidebar-nav">
+    <a href="/dashboard" class="sidebar-icon" title="Dashboard">
+        <i class="fa-solid fa-table-columns"></i>
+    </a>
+    <a href="/network-monitoring" class="sidebar-icon active" title="Network Monitoring">
+        <i class="fa-solid fa-network-wired"></i>
+    </a>
+    <a href="/cyber-monitoring" class="sidebar-icon" title="Cyber Monitoring">
+        <i class="fa-solid fa-bolt"></i>
+    </a>
+    <a href="/system-status" class="sidebar-icon" title="System Status">
+        <i class="fa-solid fa-server"></i>
+    </a>
+    <a href="/alert-logs" class="sidebar-icon" title="Alert Logs">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+    </a>
+</div>
+<div class="sidebar-bottom">
+    <a href="/settings" class="sidebar-icon" title="Settings">
+        <i class="fa-solid fa-gear"></i>
+    </a>
+    <a href="/logout" class="sidebar-icon" title="Logout">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+    </a>
+    <a href="/manage_users" class="sidebar-icon" title="Manage Users">
+        <i class="fa-solid fa-users"></i>
+    </a>
+</div>
+    </nav>
+
+    <main class="main-content">
+        <header class="header">
+            <div class="header-title">
+                <h1>NETWORK MONITORING</h1>
+                <p>Raspberry Pi 5 Hardware & Services</p>
+            </div>
+            <div class="header-chips">
+                <div class="chip" id="chip-rpi"><i class="fa-solid fa-circle"></i> RPi-5 ONLINE</div>
+                <div class="chip" id="chip-ws"><i class="fa-solid fa-circle"></i> WEBSOCKET LIVE</div>
+            </div>
+        </header>
+
+        <!-- TOP 3 COLUMN GRID -->
+        <div class="status-grid">
+            
+            <!-- Left: Hardware Visual -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">RASPBERRY PI 5</div>
+                </div>
+                
+                <div class="pi-visual">
+                    <div class="pi-board">
+                        <div class="pi-chip"></div>
+                        <div class="pi-port usb1"></div>
+                        <div class="pi-port usb2"></div>
+                        <div class="pi-port eth"></div>
+                        <div class="pi-pins"></div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <span id="pi-online-status" style="color: var(--neon-green); font-size: 12px;">
+                        <i class="fa-solid fa-circle" style="font-size: 8px;"></i> ONLINE
+                    </span>
+                </div>
+            </div>
+
+            <!-- Center: CPU, Memory, Temp, Disk -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">SYSTEM PERFORMANCE</div>
+                </div>
+                
+                <div class="stat-group">
+                    <div class="stat-item">
+                        <div class="stat-label">CPU Usage <span id="stat-cpu">--</span></div>
+                        <div class="progress-bg"><div class="progress-fill" id="stat-cpu-bar" style="width: 0%;"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Memory Usage <span id="stat-memory">--</span></div>
+                        <div class="progress-bg"><div class="progress-fill" id="stat-memory-bar" style="width: 0%;"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Temperature <span id="stat-temp">--</span></div>
+                        <div class="progress-bg"><div class="progress-fill" id="stat-temp-bar" style="width: 0%;"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Disk Usage <span id="stat-disk">--</span></div>
+                        <div class="progress-bg"><div class="progress-fill" id="stat-disk-bar" style="width: 0%;"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Uptime <span id="stat-uptime">--:--:--</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Services -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">SERVICES</div>
+                </div>
+                
+                <div class="service-list">
+                    <div class="service-item">
+                        <div class="service-name"><i class="fa-solid fa-shield-halved"></i> Suricata IDS</div>
+                        <div class="service-status running" id="svc-suricata">RUNNING</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name"><i class="fa-solid fa-bolt"></i> Flask Backend</div>
+                        <div class="service-status running" id="svc-flask">RUNNING</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name"><i class="fa-solid fa-database"></i> MySQL Database</div>
+                        <div class="service-status running" id="svc-mysql">RUNNING</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name"><i class="fa-solid fa-microchip"></i> GPIO Controller</div>
+                        <div class="service-status running" id="svc-gpio">RUNNING</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BOTTOM 2 COLUMN GRID -->
+        <div class="bottom-grid">
+            
+            <!-- Logs / Information -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">SYSTEM INFORMATION</div>
+                </div>
+                <div class="sys-info-list">
+                    <div class="sys-info-item"><span>System Name</span> <span id="info-name">H-FND Core</span></div>
+                    <div class="sys-info-item"><span>System Location</span> <span id="info-location">Server Room 1</span></div>
+                    <div class="sys-info-item"><span>System Time</span> <span id="info-time">--:--:--</span></div>
+                    <div class="sys-info-item"><span>Timezone</span> <span>UTC+8</span></div>
+                    <div class="sys-info-item"><span>System Version</span> <span>v1.0.0</span></div>
+                    <div class="sys-info-item"><span>IP Address</span> <span id="info-ip">--</span></div>
+                </div>
+            </div>
+
+            <!-- USB Status Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">USB CONNECTION STATUS</div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 5px;">
+                    <div class="usb-status-item">
+                        <span class="usb-name">USB1</span>
+                        <span class="usb-status disconnected" id="usb1-status">DISCONNECTED</span>
+                    </div>
+                    <div class="usb-status-item">
+                        <span class="usb-name">USB2</span>
+                        <span class="usb-status disconnected" id="usb2-status">DISCONNECTED</span>
+                    </div>
+                    <div class="usb-status-item">
+                        <span class="usb-name">USB3</span>
+                        <span class="usb-status disconnected" id="usb3-status">DISCONNECTED</span>
+                    </div>
+                    <div class="usb-status-item">
+                        <span class="usb-name">USB4</span>
+                        <span class="usb-status disconnected" id="usb4-status">DISCONNECTED</span>
+                    </div>
+                    <div class="usb-summary" id="usb-summary">❌ All USB cables disconnected</div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+</div>
+
+<!-- Socket.IO -->
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+<script>
+// ============================================
+// WEBSOCKET - SYSTEM STATUS
+// ============================================
+
+const socket = io();
+
+socket.on('connect', function() {
+    console.log('🔗 WebSocket connected - System Status');
+    document.getElementById('chip-ws').innerHTML = '<i class="fa-solid fa-circle"></i> WEBSOCKET LIVE';
+    document.getElementById('chip-ws').style.color = 'var(--neon-green)';
+    socket.emit('request_data');
+});
+
+socket.on('pi_update', function(data) {
+    console.log('📊 System Status Update:', data);
+    updateSystemStatus(data);
+});
+
+socket.on('disconnect', function() {
+    console.log('🔌 WebSocket disconnected - System Status');
+    document.getElementById('chip-ws').innerHTML = '<i class="fa-solid fa-circle"></i> WEBSOCKET OFFLINE';
+    document.getElementById('chip-ws').style.color = 'var(--color-red)';
+});
+
+// ============================================
+// UPDATE SYSTEM STATUS
+// ============================================
+
+function updateSystemStatus(data) {
+    const metrics = data.metrics || {};
+    const alerts = data.alerts || [];
+
+    // ---- CPU ----
+    const cpu = metrics.cpu || 0;
+    document.getElementById('stat-cpu').textContent = cpu + '%';
+    document.getElementById('stat-cpu-bar').style.width = Math.min(cpu, 100) + '%';
+
+    // ---- Memory ----
+    const memory = metrics.memory?.percent || 0;
+    document.getElementById('stat-memory').textContent = memory + '%';
+    document.getElementById('stat-memory-bar').style.width = Math.min(memory, 100) + '%';
+
+    // ---- Temperature ----
+    const temp = metrics.temperature || 0;
+    document.getElementById('stat-temp').textContent = temp + '°C';
+    const tempPercent = Math.min((temp / 80) * 100, 100);
+    document.getElementById('stat-temp-bar').style.width = tempPercent + '%';
+    document.getElementById('stat-temp-bar').style.background = temp > 70 ? '#ff4d4d' : '#c8f542';
+
+    // ---- Disk ----
+    const disk = metrics.disk?.percent || 0;
+    document.getElementById('stat-disk').textContent = disk + '%';
+    document.getElementById('stat-disk-bar').style.width = Math.min(disk, 100) + '%';
+    document.getElementById('stat-disk-bar').style.background = disk > 90 ? '#ffaa00' : '#c8f542';
+
+    // ---- Uptime ----
+    const uptime = metrics.uptime || '0h 0m';
+    document.getElementById('stat-uptime').textContent = uptime;
+
+    // ---- USB Status ----
+    const usbStatus = metrics.usb_status || {};
+    const usbNames = ['usb1', 'usb2', 'usb3', 'usb4'];
+    let connectedCount = 0;
+    
+    usbNames.forEach((name, index) => {
+        const status = usbStatus[name] || 'UNKNOWN';
+        const el = document.getElementById(`usb${index+1}-status`);
+        if (el) {
+            if (status === 'CONNECTED') {
+                el.textContent = 'CONNECTED ✅';
+                el.className = 'usb-status connected';
+                connectedCount++;
+            } else {
+                el.textContent = 'DISCONNECTED ❌';
+                el.className = 'usb-status disconnected';
+            }
+        }
+    });
+    
+    const summaryEl = document.getElementById('usb-summary');
+    if (summaryEl) {
+        if (connectedCount === 4) {
+            summaryEl.textContent = '✅ All 4 USB cables connected';
+            summaryEl.style.color = 'var(--neon-green)';
+        } else if (connectedCount === 0) {
+            summaryEl.textContent = '❌ All USB cables disconnected';
+            summaryEl.style.color = 'var(--color-red)';
+        } else {
+            summaryEl.textContent = `⚠️ ${connectedCount} of 4 USB cables connected`;
+            summaryEl.style.color = 'var(--color-orange)';
+        }
+    }
+
+    // ---- Network Status / IP ----
+    const networkStatus = metrics.network_status || 'UNKNOWN';
+    const isOnline = networkStatus === 'CONNECTED';
+    const statusEl = document.getElementById('pi-online-status');
+    const chipRpi = document.getElementById('chip-rpi');
+
+    if (isOnline) {
+        statusEl.innerHTML = '<i class="fa-solid fa-circle" style="font-size: 8px; color: var(--neon-green);"></i> ONLINE';
+        statusEl.style.color = 'var(--neon-green)';
+        chipRpi.innerHTML = '<i class="fa-solid fa-circle"></i> RPi-5 ONLINE';
+        chipRpi.style.color = 'var(--neon-green)';
+    } else {
+        statusEl.innerHTML = '<i class="fa-solid fa-circle" style="font-size: 8px; color: var(--color-red);"></i> OFFLINE';
+        statusEl.style.color = 'var(--color-red)';
+        chipRpi.innerHTML = '<i class="fa-solid fa-circle"></i> RPi-5 OFFLINE';
+        chipRpi.style.color = 'var(--color-red)';
+    }
+
+    // ---- IP Address ----
+    const ip = metrics.ip_address || '172.20.10.2';
+    document.getElementById('info-ip').textContent = ip;
+
+    // ---- System Time ----
+    const now = new Date();
+    document.getElementById('info-time').textContent = now.toLocaleTimeString();
+
+    // ---- Services Status ----
+    const services = ['svc-suricata', 'svc-flask', 'svc-mysql', 'svc-gpio'];
+    services.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.className = 'service-status running';
+            el.textContent = 'RUNNING';
+        }
+    });
+}
+
+// ============================================
+// UPDATE SYSTEM TIME (every second)
+// ============================================
+
+function updateClock() {
+    const now = new Date();
+    const timeEl = document.getElementById('info-time');
+    if (timeEl) {
+        timeEl.textContent = now.toLocaleTimeString();
+    }
+}
+
+setInterval(updateClock, 1000);
+
+console.log('🔒 System Status WebSocket loaded');
+</script>
+</body>
+</html>

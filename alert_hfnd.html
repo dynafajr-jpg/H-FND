@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-FND Alert Logs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0d0f12;
+            --panel-dark: #17191d;
+            --panel-border: #2b2f36;
+            --neon-green: #c8f542; 
+            --text-main: #ffffff;
+            --text-muted: #8a8f98;
+            --color-red: #ff4d4d;
+            --color-orange: #ffaa00;
+            --color-blue: #4a9eff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden; 
+        }
+
+        .app-layout { display: grid; grid-template-columns: 80px 1fr; height: 100%; }
+
+        /* SIDEBAR */
+        .sidebar { background-color: var(--panel-dark); border-right: 1px solid var(--panel-border); display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
+        .sidebar-logo { font-size: 28px; color: var(--neon-green); margin-bottom: 40px; }
+        .sidebar-nav { display: flex; flex-direction: column; gap: 20px; flex-grow: 1; }
+        .sidebar-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 18px; color: var(--text-muted); cursor: pointer; transition: 0.3s; text-decoration: none; }
+        .sidebar-icon:hover { color: var(--text-main); background-color: rgba(255,255,255,0.05); }
+        .sidebar-icon.active { background-color: var(--neon-green); color: var(--bg-dark); box-shadow: 0 0 15px rgba(200, 245, 66, 0.4); }
+        .sidebar-bottom { display: flex; flex-direction: column; gap: 20px; }
+
+        /* MAIN */
+        .main-content { padding: 30px; overflow-y: auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .header-title h1 { font-size: 22px; font-weight: 600; }
+        .header-title p { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+        .header-chips { display: flex; gap: 10px; }
+        .chip { background-color: var(--panel-dark); border: 1px solid var(--panel-border); padding: 6px 12px; border-radius: 20px; font-size: 11px; display: flex; align-items: center; gap: 6px; }
+        .chip i { color: var(--neon-green); font-size: 8px; }
+
+        /* CARD */
+        .card { background-color: var(--panel-dark); border: 1px solid var(--panel-border); border-radius: 10px; padding: 20px; width: 100%; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .card-title { font-size: 13px; font-weight: 600; color: var(--text-main); }
+        .card-link { font-size: 10px; color: var(--neon-green); text-decoration: none; }
+
+        /* Filters */
+        .filters { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .filter-btn { background: var(--bg-dark); border: 1px solid var(--panel-border); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 11px; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.3s; }
+        .filter-btn.active { border-color: var(--neon-green); color: var(--neon-green); background: rgba(200,245,66,0.1); }
+        .filter-btn:hover { border-color: var(--neon-green); color: var(--neon-green); }
+
+        /* TABLE */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; }
+        th { text-align: left; color: var(--text-muted); font-size: 10px; font-weight: 400; padding-bottom: 12px; border-bottom: 1px solid var(--panel-border); }
+        td { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: middle; }
+
+        /* STATUS TAGS */
+        .status-tag { padding: 3px 10px; border-radius: 12px; font-size: 9px; font-weight: 600; text-transform: uppercase; display: inline-block; }
+        .status-tag.critical { background: rgba(255,77,77,0.2); color: var(--color-red); border: 1px solid rgba(255,77,77,0.3); }
+        .status-tag.high { background: rgba(255,170,0,0.2); color: var(--color-orange); border: 1px solid rgba(255,170,0,0.3); }
+        .status-tag.medium { background: rgba(200,245,66,0.15); color: var(--neon-green); border: 1px solid rgba(200,245,66,0.2); }
+        .status-tag.low { background: rgba(138,143,152,0.15); color: var(--text-muted); border: 1px solid rgba(138,143,152,0.2); }
+        .status-tag.new { background: rgba(200,245,66,0.1); color: var(--neon-green); }
+        .status-tag.investigating { background: rgba(255,170,0,0.15); color: var(--color-orange); border: 1px solid rgba(255,170,0,0.2); }
+        .status-tag.resolved { background: rgba(138,143,152,0.15); color: var(--text-muted); border: 1px solid rgba(138,143,152,0.2); }
+
+        /* ACTION BUTTONS */
+        .action-btn {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.2s;
+            margin-right: 4px;
+        }
+        .action-btn.acknowledge { background: rgba(200,245,66,0.15); color: var(--neon-green); border: 1px solid rgba(200,245,66,0.2); }
+        .action-btn.acknowledge:hover { background: rgba(200,245,66,0.25); }
+        .action-btn.resolve { background: rgba(138,143,152,0.15); color: var(--text-muted); border: 1px solid rgba(138,143,152,0.2); }
+        .action-btn.resolve:hover { background: rgba(138,143,152,0.25); }
+        .action-btn.block { background: rgba(255,77,77,0.15); color: var(--color-red); border: 1px solid rgba(255,77,77,0.2); }
+        .action-btn.block:hover { background: rgba(255,77,77,0.25); }
+        .action-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        /* MITIGATION */
+        .mitigation-trigger {
+            color: var(--color-blue);
+            cursor: pointer;
+            font-size: 11px;
+            text-decoration: underline dotted;
+        }
+        .mitigation-trigger:hover { color: var(--neon-green); }
+
+        .mitigation-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--panel-dark);
+            border: 1px solid var(--panel-border);
+            border-radius: 10px;
+            padding: 25px;
+            max-width: 500px;
+            width: 90%;
+            z-index: 1000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        }
+        .mitigation-popup.active { display: block; }
+        .mitigation-popup h3 { color: var(--neon-green); margin-bottom: 10px; }
+        .mitigation-popup ul { list-style: none; padding: 0; }
+        .mitigation-popup ul li { padding: 6px 0; font-size: 12px; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .mitigation-popup .close-btn {
+            background: var(--color-red);
+            color: white;
+            border: none;
+            padding: 6px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .mitigation-popup .close-btn:hover { opacity: 0.8; }
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+        }
+        .popup-overlay.active { display: block; }
+
+        /* EMPTY STATE */
+        .empty-state { text-align: center; padding: 60px 0; color: var(--text-muted); }
+        .empty-state i { font-size: 40px; margin-bottom: 15px; color: var(--panel-border); }
+        .empty-state h3 { color: var(--text-main); font-size: 16px; font-weight: 400; margin-bottom: 5px; }
+        .empty-state p { font-size: 11px; }
+
+        /* LOADING */
+        .loading { text-align: center; padding: 40px 0; color: var(--text-muted); }
+        .loading i { font-size: 24px; margin-bottom: 10px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* ============================================
+           RESPONSIVE FIX
+           ============================================ */
+
+        @media (max-width: 992px) {
+            .main-content { padding: 15px; }
+            .card { padding: 15px; }
+            .alerts-table { font-size: 11px; }
+            .alerts-table th, .alerts-table td { padding: 8px 4px; }
+            .action-btn { font-size: 8px; padding: 2px 6px; margin-right: 2px; }
+            .status-tag { font-size: 8px; padding: 2px 6px; }
+            .mitigation-trigger { font-size: 9px; }
+            .filters { gap: 5px; }
+            .filter-btn { font-size: 9px; padding: 4px 8px; }
+        }
+
+        @media (max-width: 700px) {
+            .app-layout { grid-template-columns: 60px 1fr; }
+            .main-content { padding: 10px; }
+            .card { padding: 10px; }
+            
+            .alerts-table thead { display: none; }
+            .alerts-table tr { 
+                display: block; 
+                border-bottom: 2px solid var(--panel-border);
+                margin-bottom: 10px;
+                padding: 10px 5px;
+            }
+            .alerts-table td { 
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 6px 0;
+                border-bottom: none;
+                font-size: 11px;
+            }
+            .alerts-table td:last-child { border-bottom: none; }
+            .alerts-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: var(--text-muted);
+                font-size: 10px;
+                margin-right: 10px;
+                min-width: 70px;
+            }
+            .alerts-table td:last-child { flex-wrap: wrap; gap: 4px; }
+            .alerts-table td:last-child::before { content: "Actions"; }
+            
+            .mitigation-trigger { font-size: 10px; }
+            .action-btn { font-size: 8px; padding: 2px 6px; margin-bottom: 2px; }
+            .status-tag { font-size: 8px; padding: 2px 6px; }
+            
+            .header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .header-chips { width: 100%; flex-wrap: wrap; }
+            .chip { font-size: 9px; padding: 4px 8px; }
+            
+            .filters { gap: 4px; }
+            .filter-btn { font-size: 8px; padding: 3px 6px; }
+            
+            .card-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar { padding: 10px 0; }
+            .sidebar-logo { font-size: 20px; margin-bottom: 20px; }
+            .sidebar-icon { width: 35px; height: 35px; font-size: 14px; }
+            .main-content { padding: 8px; }
+            .card { padding: 8px; }
+            .card-title { font-size: 11px; }
+            .alerts-table td { font-size: 10px; padding: 4px 0; }
+            .alerts-table td::before { min-width: 60px; font-size: 9px; }
+            .action-btn { font-size: 7px; padding: 1px 4px; }
+            .status-tag { font-size: 7px; padding: 1px 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-layout">
+    <nav class="sidebar">
+        <div class="sidebar-logo"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="sidebar-nav">
+            <a href="/dashboard" class="sidebar-icon" title="Dashboard"><i class="fa-solid fa-table-columns"></i></a>
+            <a href="/network-monitoring" class="sidebar-icon" title="Network Monitoring"><i class="fa-solid fa-network-wired"></i></a>
+            <a href="/cyber-monitoring" class="sidebar-icon" title="Cyber Monitoring"><i class="fa-solid fa-bolt"></i></a>
+            <a href="/system-status" class="sidebar-icon" title="System Status"><i class="fa-solid fa-server"></i></a>
+            <a href="/alert-logs" class="sidebar-icon active" title="Alert Logs"><i class="fa-solid fa-clock-rotate-left"></i></a>
+        </div>
+        <div class="sidebar-bottom">
+            <a href="/settings" class="sidebar-icon" title="Settings"><i class="fa-solid fa-gear"></i></a>
+            <a href="/logout" class="sidebar-icon" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+            <a href="/manage_users" class="sidebar-icon" title="Manage Users"><i class="fa-solid fa-users"></i></a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="header">
+            <div class="header-title">
+                <h1>ALERT LOGS</h1>
+                <p>System alerts, notifications & mitigation strategies</p>
+            </div>
+            <div class="header-chips">
+                <div class="chip" id="chip-ws"><i class="fa-solid fa-circle"></i> WEBSOCKET LIVE</div>
+            </div>
+        </header>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">LOG ARCHIVE</div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <span style="font-size: 10px; color: var(--text-muted);">Total: <span id="log-total">0</span></span>
+                    <a href="/api/export-alerts" class="card-link"><i class="fa-solid fa-download"></i> Export</a>
+                </div>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Alerts</button>
+                <button class="filter-btn" data-filter="critical">Critical</button>
+                <button class="filter-btn" data-filter="high">High</button>
+                <button class="filter-btn" data-filter="medium">Medium</button>
+                <button class="filter-btn" data-filter="low">Low</button>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TIME</th>
+                            <th>TYPE</th>
+                            <th>SOURCE</th>
+                            <th>SEVERITY</th>
+                            <th>MITIGATION</th>
+                            <th>STATUS</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alert-table-body">
+                        <tr>
+                            <td colspan="7">
+                                <div class="loading">
+                                    <i class="fa-solid fa-spinner"></i>
+                                    <p>Loading alerts...</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Mitigation Popup -->
+<div class="popup-overlay" id="popup-overlay"></div>
+<div class="mitigation-popup" id="mitigation-popup">
+    <h3><i class="fa-solid fa-shield-halved"></i> Mitigation Strategy</h3>
+    <div id="mitigation-content">
+        <ul><li>Loading mitigation details...</li></ul>
+    </div>
+    <button class="close-btn" onclick="closeMitigationPopup()">Close</button>
+</div>
+
+<!-- Socket.IO -->
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+<script>
+// ============================================
+// MITIGATION STRATEGIES
+// ============================================
+
+const mitigationStrategies = {
+    'ddos attack': {
+        title: 'DDoS Attack Mitigation',
+        steps: [
+            'Enable rate limiting on firewall',
+            'Block suspicious IP ranges',
+            'Activate CDN/WAF protection',
+            'Contact ISP for upstream filtering',
+            'Monitor traffic patterns for anomalies'
+        ]
+    },
+    'dos attack': {
+        title: 'DoS Attack Mitigation',
+        steps: [
+            'Identify attack source IP',
+            'Apply ACL rules to drop malicious traffic',
+            'Increase bandwidth temporarily',
+            'Enable SYN cookies',
+            'Implement connection rate limits'
+        ]
+    },
+    'dns flood attack': {
+        title: 'DNS Flood Mitigation',
+        steps: [
+            'Implement DNS sinkhole',
+            'Rate limit DNS queries per IP',
+            'Use DNS-over-HTTPS',
+            'Configure firewall to block amplification attacks',
+            'Monitor DNS server performance'
+        ]
+    },
+    'port scan': {
+        title: 'Port Scan Mitigation',
+        steps: [
+            'Block scanning IPs at firewall level',
+            'Close unused ports',
+            'Implement IPS rules for scan detection',
+            'Enable port knocking for sensitive services',
+            'Monitor for repeated scan patterns'
+        ]
+    },
+    'brute force attack': {
+        title: 'Brute Force Attack Mitigation',
+        steps: [
+            'Enable account lockout policies',
+            'Enforce strong password policies',
+            'Implement CAPTCHA after failed attempts',
+            'Block IP after multiple failures',
+            'Enable multi-factor authentication'
+        ]
+    },
+    'malware detected': {
+        title: 'Malware Detection Mitigation',
+        steps: [
+            'Isolate affected device from network immediately',
+            'Run antivirus scan',
+            'Update signature definitions',
+            'Notify incident response team',
+            'Perform system restore if necessary'
+        ]
+    },
+    'phishing attempt': {
+        title: 'Phishing Attack Mitigation',
+        steps: [
+            'Block sender domain/email',
+            'Educate users on phishing awareness',
+            'Implement email filtering solutions',
+            'Report to security team',
+            'Update email security policies'
+        ]
+    },
+    'unauthorized access': {
+        title: 'Unauthorized Access Mitigation',
+        steps: [
+            'Revoke access immediately',
+            'Force password reset for affected account',
+            'Review access logs',
+            'Enable multi-factor authentication',
+            'Conduct security audit'
+        ]
+    }
+};
+
+const defaultMitigation = {
+    title: 'General Security Alert',
+    steps: [
+        'Investigate the source of the alert',
+        'Verify if it is a false positive',
+        'Apply general security best practices',
+        'Document the incident for future reference',
+        'Escalate if necessary'
+    ]
+};
+
+// ============================================
+// STATE
+// ============================================
+
+let allAlerts = [];
+let currentFilter = 'all';
+
+// ============================================
+// DOM ELEMENTS
+// ============================================
+
+const tbody = document.getElementById('alert-table-body');
+const totalEl = document.getElementById('log-total');
+
+// ============================================
+// FETCH ALERTS FROM DATABASE
+// ============================================
+
+function fetchAlerts() {
+    fetch('/api/cyber-stats')
+        .then(response => response.json())
+        .then(data => {
+            allAlerts = data.recent || [];
+            totalEl.textContent = data.total || 0;
+            renderAlerts();
+        })
+        .catch(error => {
+            console.log('Error fetching alerts:', error);
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="7">
+                        <div class="empty-state">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <h3>Error loading alerts</h3>
+                            <p>Please check your connection.</p>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        });
+}
+
+// ============================================
+// GET MITIGATION
+// ============================================
+
+function getMitigation(alertType) {
+    if (!alertType) return defaultMitigation;
+    const key = alertType.toLowerCase();
+    for (const [pattern, strategy] of Object.entries(mitigationStrategies)) {
+        if (key.includes(pattern)) {
+            return strategy;
+        }
+    }
+    return defaultMitigation;
+}
+
+// ============================================
+// SHOW MITIGATION POPUP
+// ============================================
+
+function showMitigationPopup(alertType) {
+    const mitigation = getMitigation(alertType);
+    const content = document.getElementById('mitigation-content');
+    const popup = document.getElementById('mitigation-popup');
+    const overlay = document.getElementById('popup-overlay');
+    
+    let stepsHtml = mitigation.steps.map((step, i) => 
+        `<li>${i+1}. ${step}</li>`
+    ).join('');
+    
+    content.innerHTML = `
+        <p style="color: var(--text-muted); font-size: 12px; margin-bottom: 10px;">
+            <strong style="color: var(--text-main);">Alert Type:</strong> ${alertType || 'Unknown'}
+        </p>
+        <ul>${stepsHtml}</ul>
+    `;
+    
+    popup.classList.add('active');
+    overlay.classList.add('active');
+}
+
+function closeMitigationPopup() {
+    document.getElementById('mitigation-popup').classList.remove('active');
+    document.getElementById('popup-overlay').classList.remove('active');
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMitigationPopup();
+});
+
+// ============================================
+// ACTION HANDLERS - UPDATE DATABASE
+// ============================================
+
+function handleAction(alertId, action) {
+    console.log('🔄 Action:', action, 'for Alert ID:', alertId);
+    
+    if (!alertId || alertId === 0) {
+        console.log('❌ Invalid alert ID');
+        return;
+    }
+    
+    fetch('/api/alert-action', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: alertId, action: action })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('✅ Response:', data);
+        if (data.success) {
+            fetchAlerts(); // Refresh alerts
+        } else {
+            console.log('❌ Action failed:', data);
+        }
+    })
+    .catch(error => console.log('❌ Action error:', error));
+}
+
+// ============================================
+// RENDER ALERTS
+// ============================================
+
+function renderAlerts() {
+    let filtered = allAlerts;
+    if (currentFilter !== 'all') {
+        filtered = allAlerts.filter(a => a.severity === currentFilter);
+    }
+
+    if (filtered.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="7">
+                    <div class="empty-state">
+                        <i class="fa-solid fa-inbox"></i>
+                        <h3>${allAlerts.length === 0 ? 'No alerts recorded' : 'No alerts match filter'}</h3>
+                        <p>${allAlerts.length === 0 ? 'Waiting for Suricata to detect threats.' : 'Try changing the filter above.'}</p>
+                    </div>
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    const latest = filtered.slice(-100).reverse();
+
+    tbody.innerHTML = '';
+    latest.forEach(alert => {
+        const row = document.createElement('tr');
+        const time = alert.timestamp || '--:--:--';
+        const severity = alert.severity || 'low';
+        const status = alert.status || 'new';
+        const alertType = alert.alert_type || 'Unknown';
+        const alertId = alert.id || 0;
+        
+        let statusDisplay = status.toUpperCase();
+        if (status === 'new') statusDisplay = 'NEW';
+        else if (status === 'investigating') statusDisplay = 'INVESTIGATING';
+        else if (status === 'resolved') statusDisplay = 'RESOLVED';
+        
+        row.innerHTML = `
+            <td data-label="TIME">${time}</td>
+            <td data-label="TYPE">${alertType}</td>
+            <td data-label="SOURCE">${alert.source_ip || 'N/A'}</td>
+            <td data-label="SEVERITY"><span class="status-tag ${severity}">${severity.toUpperCase()}</span></td>
+            <td data-label="MITIGATION">
+                <span class="mitigation-trigger" onclick="showMitigationPopup('${alertType.replace(/'/g, "\\'")}')">
+                    <i class="fa-solid fa-shield-halved"></i> View Strategy
+                </span>
+            </td>
+            <td data-label="STATUS"><span class="status-tag ${status}">${statusDisplay}</span></td>
+            <td data-label="ACTIONS">
+                ${status === 'new' ? `<button class="action-btn acknowledge" onclick="handleAction(${alertId}, 'acknowledge')">Acknowledge</button>` : ''}
+                ${status !== 'resolved' ? `<button class="action-btn resolve" onclick="handleAction(${alertId}, 'resolve')">Resolve</button>` : ''}
+                <button class="action-btn block" onclick="handleAction(${alertId}, 'block')">Block IP</button>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+// ============================================
+// FILTER BUTTONS
+// ============================================
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentFilter = this.dataset.filter || 'all';
+        renderAlerts();
+    });
+});
+
+// ============================================
+// WEBSOCKET
+// ============================================
+
+const socket = io();
+
+socket.on('connect', function() {
+    console.log('🔗 WebSocket connected - Alert Logs');
+    document.getElementById('chip-ws').innerHTML = '<i class="fa-solid fa-circle"></i> WEBSOCKET LIVE';
+    document.getElementById('chip-ws').style.color = '#c8f542';
+    socket.emit('request_data');
+});
+
+socket.on('pi_update', function(data) {
+    console.log('📊 New alert received');
+    fetchAlerts();
+});
+
+socket.on('disconnect', function() {
+    console.log('🔌 WebSocket disconnected - Alert Logs');
+    document.getElementById('chip-ws').innerHTML = '<i class="fa-solid fa-circle"></i> WEBSOCKET OFFLINE';
+    document.getElementById('chip-ws').style.color = '#ff4d4d';
+});
+
+// ============================================
+// INIT
+// ============================================
+
+fetchAlerts();
+setInterval(fetchAlerts, 10000);
+
+console.log('🔒 Alert Logs with Mitigation loaded');
+</script>
+</body>
+</html>

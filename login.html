@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-FND Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0d0f12;
+            --panel-dark: #17191d;
+            --neon-green: #c8f542;
+            --neon-dark: #a8d422;
+            --text-main: #ffffff;
+            --text-muted: #8a8f98;
+            --border-color: #2b2f36;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .flash-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .flash-message {
+            background: rgba(255, 77, 77, 0.2);
+            border: 1px solid #ff4d4d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .flash-message.success {
+            background: rgba(200, 245, 66, 0.2);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+        }
+
+        .login-container {
+            display: flex;
+            width: 90%;
+            max-width: 1400px;
+            height: 85vh;
+            background-color: var(--panel-dark);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .left-panel {
+            flex: 1;
+            background: radial-gradient(circle at center, #1e2128, #0d0f12);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+            background-color: var(--neon-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--bg-dark);
+            font-size: 24px;
+        }
+
+        .brand-title h1 { font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+        .brand-title h1 span { color: var(--neon-green); }
+        .brand-title p { font-size: 12px; color: var(--neon-green); letter-spacing: 1px; margin-top: 5px; }
+
+        .brand-description {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            max-width: 300px;
+        }
+
+        .pi-image-wrapper {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* ============================================
+           RASPBERRY PI 5 ILLUSTRATION (CSS ONLY)
+           ============================================ */
+
+        .pi-illustration {
+            width: 85%;
+            max-width: 400px;
+            height: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .pi-board-css {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0d2118 0%, #133c26 50%, #0d2118 100%);
+            border: 2px solid #c8f542;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 
+                0 0 30px rgba(200, 245, 66, 0.3),
+                inset 0 0 30px rgba(0, 0, 0, 0.5);
+            animation: floatBoard 4s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        .pi-board-css::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(200, 245, 66, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 245, 66, 0.08) 1px, transparent 1px);
+            background-size: 20px 20px;
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        .pi-chip-css {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 1.5px solid #c8f542;
+            border-radius: 6px;
+            box-shadow: 
+                0 0 20px rgba(200, 245, 66, 0.4),
+                inset 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .pi-chip-css::after {
+            content: 'BCM2712';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8px;
+            color: #c8f542;
+            font-family: monospace;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 5px rgba(200, 245, 66, 0.8);
+        }
+
+        .pi-pins-css {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 50px;
+            height: 40px;
+            background-image: radial-gradient(circle, #c8f542 1.5px, transparent 1.5px);
+            background-size: 6px 6px;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 3px rgba(200, 245, 66, 0.5));
+        }
+
+        .pi-port-css {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            width: 50px;
+            height: 20px;
+            background: linear-gradient(180deg, #2a2a2a, #1a1a1a);
+            border: 1px solid #c8f542;
+            border-radius: 3px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .pi-port-css::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 2px;
+            background: #c8f542;
+            opacity: 0.4;
+            border-radius: 1px;
+        }
+
+        .pi-usb-css {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            width: 25px;
+            height: 50px;
+            background: linear-gradient(180deg, 
+                #2a2a2a 0%, #2a2a2a 40%, 
+                transparent 40%, transparent 50%,
+                #2a2a2a 50%, #2a2a2a 90%,
+                transparent 90%, transparent 100%);
+            border-left: 1px solid #c8f542;
+            border-radius: 2px;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .pi-led-css {
+            position: absolute;
+            bottom: 22px;
+            right: 22px;
+            width: 8px;
+            height: 8px;
+            background: #c8f542;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #c8f542, 0 0 20px rgba(200, 245, 66, 0.5);
+            animation: pulseLed 2s ease-in-out infinite;
+        }
+
+        .pi-led-css::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -14px;
+            width: 8px;
+            height: 8px;
+            background: #ff4d4d;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff4d4d, 0 0 20px rgba(255, 77, 77, 0.5);
+            animation: pulseLed 2s ease-in-out infinite 0.5s;
+        }
+
+        .pi-logo-css {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #c8f542;
+            font-family: monospace;
+            font-weight: 700;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            text-shadow: 0 0 8px rgba(200, 245, 66, 0.6);
+        }
+
+        @keyframes floatBoard {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(0.5deg); }
+        }
+
+        @keyframes pulseLed {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
+        }
+
+        .pi-status-card {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            background-color: rgba(23, 25, 29, 0.8);
+            border: 1px solid var(--border-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .pi-status-icon { font-size: 32px; color: var(--neon-green); }
+        .pi-status-text h4 { font-size: 14px; }
+        .pi-status-text p { font-size: 11px; color: var(--neon-green); display: flex; align-items: center; gap: 5px; margin-top: 4px; }
+        .online-dot { width: 6px; height: 6px; background-color: var(--neon-green); border-radius: 50%; display: inline-block; }
+
+        .right-panel {
+            flex: 1;
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .system-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--bg-dark);
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--neon-green);
+        }
+        .status-dot { width: 8px; height: 8px; background-color: var(--neon-green); border-radius: 50%; box-shadow: 0 0 5px var(--neon-green); }
+
+        .form-wrapper { max-width: 400px; width: 100%; margin: 0 auto; text-align: center; }
+
+        .shield-icon-container {
+            font-size: 50px;
+            color: var(--neon-green);
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(200, 245, 66, 0.4);
+        }
+
+        .form-wrapper h2 { font-size: 32px; font-weight: 400; margin-bottom: 5px; letter-spacing: 2px; }
+        .form-wrapper h2 span { font-weight: 700; }
+        .form-wrapper p { color: var(--text-muted); font-size: 14px; margin-bottom: 40px; }
+
+        .input-group {
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 15px;
+            height: 50px;
+            transition: 0.3s;
+        }
+        
+        .input-group:focus-within { border-color: var(--neon-green); }
+        .input-group i { color: var(--text-muted); margin-right: 15px; }
+        .input-group input {
+            background: transparent;
+            border: none;
+            color: white;
+            flex-grow: 1;
+            font-size: 14px;
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--neon-green);
+            color: var(--bg-dark);
+            border: none;
+            width: 100%;
+            height: 50px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 0 20px;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--neon-dark);
+            box-shadow: 0 5px 15px rgba(200, 245, 66, 0.3);
+        }
+
+        .action-buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: white;
+            width: 100%;
+            height: 50px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover { border-color: var(--neon-green); color: var(--neon-green); }
+
+        .btn-create {
+            background-color: rgba(200, 245, 66, 0.1);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            width: 100%;
+            height: 50px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-create:hover {
+            background-color: var(--neon-green);
+            color: var(--bg-dark);
+        }
+
+        @media (max-width: 1000px) {
+            .left-panel { display: none; }
+            .right-panel { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PARTICLE CANVAS -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- FLASH MESSAGES -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container">
+          {% for category, message in messages %}
+            <div class="flash-message {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="login-container">
+        
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="brand-header">
+                <div class="brand-logo"><i class="fa-solid fa-network-wired"></i></div>
+                <div class="brand-title">
+                    <h1>H-<span>FND</span></h1>
+                    <p>HYBRID-FAILURE NETWORK DETECTOR</p>
+                </div>
+            </div>
+
+            <div class="brand-description">
+                Integrated Network Failure Monitoring and Cyber Threat Detection System
+            </div>
+
+            <div class="pi-image-wrapper">
+                <div class="pi-illustration">
+                    <div class="pi-board-css">
+                        <div class="pi-chip-css"></div>
+                        <div class="pi-pins-css"></div>
+                        <div class="pi-port-css"></div>
+                        <div class="pi-usb-css"></div>
+                        <div class="pi-led-css"></div>
+                        <div class="pi-logo-css">RPi 5</div>
+                    </div>
+                </div>
+
+                <div class="pi-status-card">
+                    <i class="fa-brands fa-raspberry-pi pi-status-icon"></i>
+                    <div class="pi-status-text">
+                        <h4>RASPBERRY PI 5</h4>
+                        <p><span class="online-dot"></span> CORE SYSTEM</p>
+                        <p style="color: var(--text-main);">ONLINE & OPERATIONAL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div class="system-status">
+                <div class="status-dot"></div>
+                SYSTEM SECURE
+            </div>
+
+            <div class="form-wrapper">
+                <div class="shield-icon-container">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                
+                <h2>WELCOME <span>BACK</span></h2>
+                <p>Please sign in to continue</p>
+
+                <form action="/" method="POST">
+                    <div class="input-group">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" name="username" placeholder="Username" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <i class="fa-regular fa-eye toggle-password" style="cursor: pointer;"></i>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        SIGN IN <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="action-buttons">
+                    <a href="/forgot_password" class="btn-secondary">
+                        <i class="fa-solid fa-shield-halved"></i> Forgot Password
+                    </a>
+
+                    <a href="/create_user" class="btn-create">
+                        <i class="fa-solid fa-user-plus"></i> Create User
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================
+         PARTICLE NETWORK ANIMATION
+         ============================================ -->
+    <script>
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 80;
+        const connectionDistance = 150;
+        const mouseDistance = 200;
+
+        const mouse = { x: null, y: null };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                if (mouse.x && mouse.y) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < mouseDistance) {
+                        this.x -= dx / 50;
+                        this.y -= dy / 50;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#c8f542';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(200, 245, 66, ${1 - dist / connectionDistance})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+
+
+    <script>
+    document.querySelectorAll('.toggle-password').forEach(function(icon) {
+        icon.addEventListener('click', function() {
+            const input = this.parentElement.querySelector('input');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        });
+    });
+    </script>
+</body>
+</html>

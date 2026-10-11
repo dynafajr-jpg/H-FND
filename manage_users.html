@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Use same dark theme as other pages */
+        :root {
+            --bg-dark: #0d0f12;
+            --panel-dark: #17191d;
+            --panel-border: #2b2f36;
+            --neon-green: #c8f542;
+            --text-main: #ffffff;
+            --text-muted: #8a8f98;
+            --color-red: #ff4d4d;
+            --color-orange: #ffaa00;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden;
+        }
+        .app-layout { display: grid; grid-template-columns: 80px 1fr; height: 100%; }
+        .sidebar { background-color: var(--panel-dark); border-right: 1px solid var(--panel-border); display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
+        .sidebar-logo { font-size: 28px; color: var(--neon-green); margin-bottom: 40px; }
+        .sidebar-nav { display: flex; flex-direction: column; gap: 20px; flex-grow: 1; }
+        .sidebar-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 18px; color: var(--text-muted); cursor: pointer; transition: 0.3s; text-decoration: none; }
+        .sidebar-icon:hover { color: var(--text-main); background-color: rgba(255,255,255,0.05); }
+        .sidebar-icon.active { background-color: var(--neon-green); color: var(--bg-dark); box-shadow: 0 0 15px rgba(200, 245, 66, 0.4); }
+        .sidebar-bottom { display: flex; flex-direction: column; gap: 20px; }
+
+        .main-content { padding: 30px; overflow-y: auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .header-title h1 { font-size: 22px; font-weight: 600; }
+        .header-title p { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+        .card { background-color: var(--panel-dark); border: 1px solid var(--panel-border); border-radius: 10px; padding: 20px; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .card-title { font-size: 13px; font-weight: 600; color: var(--text-main); }
+
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; color: var(--text-muted); font-size: 11px; font-weight: 400; padding-bottom: 15px; border-bottom: 1px solid var(--panel-border); }
+        td { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 12px; }
+
+        .role-tag { padding: 3px 10px; border-radius: 12px; font-size: 9px; font-weight: 600; }
+        .role-tag.super_admin { background: rgba(200,245,66,0.2); color: var(--neon-green); border: 1px solid rgba(200,245,66,0.3); }
+        .role-tag.admin { background: rgba(74,158,255,0.15); color: #4a9eff; border: 1px solid rgba(74,158,255,0.2); }
+        .role-tag.technician { background: rgba(138,143,152,0.15); color: var(--text-muted); border: 1px solid rgba(138,143,152,0.2); }
+
+        .btn-reset { background: rgba(255,170,0,0.15); color: var(--color-orange); padding: 4px 12px; border-radius: 4px; text-decoration: none; font-size: 10px; font-weight: 600; border: 1px solid rgba(255,170,0,0.2); }
+        .btn-reset:hover { background: rgba(255,170,0,0.25); }
+        .btn-reset.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+        .view-only { color: var(--text-muted); font-size: 10px; }
+
+        @media (max-width: 800px) {
+            .app-layout { grid-template-columns: 60px 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-layout">
+    <nav class="sidebar">
+        <div class="sidebar-logo"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="sidebar-nav">
+            <a href="/dashboard" class="sidebar-icon"><i class="fa-solid fa-table-columns"></i></a>
+            <a href="/network-monitoring" class="sidebar-icon"><i class="fa-solid fa-network-wired"></i></a>
+            <a href="/cyber-monitoring" class="sidebar-icon"><i class="fa-solid fa-bolt"></i></a>
+            <a href="/system-status" class="sidebar-icon"><i class="fa-solid fa-server"></i></a>
+            <a href="/alert-logs" class="sidebar-icon"><i class="fa-solid fa-clock-rotate-left"></i></a>
+        </div>
+        <div class="sidebar-bottom">
+            <a href="/settings" class="sidebar-icon"><i class="fa-solid fa-gear"></i></a>
+            <a href="/logout" class="sidebar-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+            <a href="/manage_users" class="sidebar-icon active"><i class="fa-solid fa-users"></i></a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="header">
+            <div class="header-title">
+                <h1>MANAGE USERS</h1>
+                <p>Manage user accounts and roles</p>
+            </div>
+        </header>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">USER LIST</div>
+                <a href="/create_user" class="card-link" style="font-size: 10px; color: var(--neon-green); text-decoration: none;">
+                    <i class="fa-solid fa-plus"></i> Create User
+                </a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Admin ID</th>
+                        <th>Created At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>
+                            <span class="role-tag {{ user.role or 'admin' }}">
+                                {{ (user.role or 'admin')|upper }}
+                            </span>
+                        </td>
+                        <td>{{ user.admin_id or '-' }}</td>
+                        <td>{{ user.created_at.strftime('%Y-%m-%d %H:%M') if user.created_at else '-' }}</td>
+                        <td>
+                            <!-- Super Admin can reset ANYONE -->
+                            {% if user_role == 'super_admin' %}
+                                <a href="/reset_password/{{ user.id }}" class="btn-reset">Reset</a>
+                            <!-- Admin can reset except super_admin -->
+                            {% elif user_role == 'admin' %}
+                                {% if user.role != 'super_admin' %}
+                                    <a href="/reset_password/{{ user.id }}" class="btn-reset">Reset</a>
+                                {% else %}
+                                    <span class="view-only">Protected</span>
+                                {% endif %}
+                            <!-- Technician: View only -->
+                            {% else %}
+                                <span class="view-only">View Only</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-FND Settings & Audit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-dark: #0d0f12; --panel-dark: #17191d; --panel-border: #2b2f36; --neon-green: #c8f542; --text-main: #ffffff; --text-muted: #8a8f98; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-dark); color: var(--text-main); padding: 30px; }
+        
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .header h1 { font-size: 22px; }
+        .back-btn { color: var(--neon-green); text-decoration: none; font-size: 14px; }
+        
+        .grid { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+        
+        .card { background-color: var(--panel-dark); border: 1px solid var(--panel-border); border-radius: 10px; padding: 20px; }
+        
+        .card-title { font-size: 14px; font-weight: 600; margin-bottom: 15px; }
+        
+        .profile-info { display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
+        .profile-item { display: flex; justify-content: space-between; }
+        .profile-item span:first-child { color: var(--text-muted); }
+        
+        .card-actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .btn-primary { background-color: var(--neon-green); color: var(--bg-dark); border: none; height: 40px; border-radius: 6px; font-weight: 700; font-size: 12px; font-family: 'Montserrat', sans-serif; cursor: pointer; padding: 0 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary:hover { opacity: 0.9; }
+        .btn-secondary { background-color: transparent; border: 1px solid var(--panel-border); color: white; height: 40px; border-radius: 6px; font-size: 12px; font-family: 'Montserrat', sans-serif; cursor: pointer; padding: 0 15px; }
+        .btn-secondary:hover { border-color: var(--neon-green); color: var(--neon-green); }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; color: var(--text-muted); font-size: 11px; padding-bottom: 10px; border-bottom: 1px solid var(--panel-border); }
+        td { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 11px; }
+        
+        .action-tag { background: rgba(200, 245, 66, 0.1); color: var(--neon-green); padding: 3px 6px; border-radius: 4px; font-size: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>SETTINGS & AUDIT</h1>
+        <a href="/dashboard" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</a>
+    </div>
+
+    <div class="grid">
+        
+        <!-- Left: User Info -->
+        <div class="card">
+            <div class="card-title">ACTIVE USER INFORMATION</div>
+            <div class="profile-info">
+                <div class="profile-item"><span>Username</span> <span>{{ user.username }}</span></div>
+                <div class="profile-item"><span>Admin ID</span> <span>{{ user.admin_id }}</span></div>
+                <div class="profile-item"><span>Role</span> <span>{{ user.role }}</span></div>
+                <div class="profile-item"><span>Created At</span> <span>{{ user.created_at }}</span></div>
+            </div>
+            
+            <div class="card-actions">
+                <a href="/change_password" class="btn-primary">
+                    <i class="fa-solid fa-key"></i> Change Password
+                </a>
+                <button class="btn-secondary" onclick="window.print()">
+                    <i class="fa-solid fa-file-export"></i> Generate Report
+                </button>
+            </div>
+        </div>
+
+        <!-- Right: Audit Logs for this user -->
+        <div class="card">
+            <div class="card-title">MY AUDIT TRAIL (TIMESTAMPS)</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ACTION</th>
+                        <th>TIMESTAMP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td>
+                            {% if 'Login' in log.action or 'Reset' in log.action or 'Password' in log.action %}
+                                <span class="action-tag">{{ log.action }}</span>
+                            {% else %}
+                                {{ log.action }}
+                            {% endif %}
+                        </td>
+                        <td>{{ log.timestamp }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="2" style="text-align: center; color: var(--text-muted);">No activity recorded yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
