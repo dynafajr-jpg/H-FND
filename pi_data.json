@@ -1,0 +1,3253 @@
+[
+  {
+    "timestamp": "2026-10-08T10:05:05.837148",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 51m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:05:05.836443",
+      "packets_per_sec": 1365
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:05:05.882480"
+  },
+  {
+    "timestamp": "2026-10-08T10:05:11.411763",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 51m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:05:11.411051",
+      "packets_per_sec": 1343
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:05:11.458210"
+  },
+  {
+    "timestamp": "2026-10-08T10:05:16.996444",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 46.3,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 52m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:05:16.996011",
+      "packets_per_sec": 1371
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:05:16.996429",
+        "alert_type": "DDoS Attack",
+        "severity": "critical",
+        "source_ip": "192.168.1.100",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:05:16.996439",
+        "alert_type": "DNS Flood Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.102",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:05:17.036226"
+  },
+  {
+    "timestamp": "2026-10-08T10:05:22.579020",
+    "metrics": {
+      "cpu": 2.0,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 46.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 52m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:05:22.578252",
+      "packets_per_sec": 1383
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:05:22.579004",
+        "alert_type": "DoS Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.101",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:05:22.579016",
+        "alert_type": "Port Scan",
+        "severity": "medium",
+        "source_ip": "192.168.1.103",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:05:22.613882"
+  },
+  {
+    "timestamp": "2026-10-08T10:05:28.158579",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 52m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:05:28.157816",
+      "packets_per_sec": 1385
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:05:28.158566",
+        "alert_type": "Brute Force Attack",
+        "severity": "medium",
+        "source_ip": "192.168.1.104",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:05:28.232293"
+  },
+  {
+    "timestamp": "2026-10-08T10:05:33.778969",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 52m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:05:33.778575",
+      "packets_per_sec": 1446
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:05:33.837040"
+  },
+  {
+    "timestamp": "2026-10-08T10:05:39.379952",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 52m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:05:39.379208",
+      "packets_per_sec": 1415
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:05:39.379939",
+        "alert_type": "DoS Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.101",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:05:39.420343"
+  },
+  {
+    "timestamp": "2026-10-08T10:05:44.955327",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 46.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 52m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:05:44.954615",
+      "packets_per_sec": 1391
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:05:44.996099"
+  },
+  {
+    "timestamp": "2026-10-08T10:05:50.533079",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.54,
+        "total_gb": 7.87
+      },
+      "temperature": 46.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 52m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:05:50.532331",
+      "packets_per_sec": 1381
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:05:50.533062",
+        "alert_type": "DoS Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.101",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:05:50.533075",
+        "alert_type": "Brute Force Attack",
+        "severity": "medium",
+        "source_ip": "192.168.1.104",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:05:50.573279"
+  },
+  {
+    "timestamp": "2026-10-08T10:05:56.112593",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 52m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:05:56.112165",
+      "packets_per_sec": 1381
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:05:56.112577",
+        "alert_type": "DoS Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.101",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:05:56.112588",
+        "alert_type": "Port Scan",
+        "severity": "medium",
+        "source_ip": "192.168.1.103",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:05:56.145118"
+  },
+  {
+    "timestamp": "2026-10-08T10:06:01.685429",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 52m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:06:01.684690",
+      "packets_per_sec": 1436
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:06:01.685416",
+        "alert_type": "DNS Flood Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.102",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:06:01.724357"
+  },
+  {
+    "timestamp": "2026-10-08T10:06:07.262128",
+    "metrics": {
+      "cpu": 2.0,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 52m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:06:07.261413",
+      "packets_per_sec": 1346
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:06:07.296689"
+  },
+  {
+    "timestamp": "2026-10-08T10:06:12.838601",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.3,
+        "used_gb": 0.54,
+        "total_gb": 7.87
+      },
+      "temperature": 49.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 52m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:06:12.838178",
+      "packets_per_sec": 1378
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:06:12.875384"
+  },
+  {
+    "timestamp": "2026-10-08T10:06:18.420321",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 53m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:06:18.419608",
+      "packets_per_sec": 1351
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:06:18.458864"
+  },
+  {
+    "timestamp": "2026-10-08T10:06:23.991923",
+    "metrics": {
+      "cpu": 0.0,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 53m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:06:23.991201",
+      "packets_per_sec": 1404
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:06:24.022277"
+  },
+  {
+    "timestamp": "2026-10-08T10:06:29.563492",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 53m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:06:29.563048",
+      "packets_per_sec": 1371
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:06:29.563478",
+        "alert_type": "DNS Flood Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.102",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:06:29.600147"
+  },
+  {
+    "timestamp": "2026-10-08T10:06:35.134289",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 46.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 53m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:06:35.133580",
+      "packets_per_sec": 1437
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:06:35.175752"
+  },
+  {
+    "timestamp": "2026-10-08T10:06:40.717195",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 53m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:06:40.716495",
+      "packets_per_sec": 1410
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:06:40.757885"
+  },
+  {
+    "timestamp": "2026-10-08T10:06:46.302747",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 53m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:06:46.301996",
+      "packets_per_sec": 1402
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:06:46.340862"
+  },
+  {
+    "timestamp": "2026-10-08T10:06:51.876401",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 46.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 53m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:06:51.875968",
+      "packets_per_sec": 1378
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:06:51.876385",
+        "alert_type": "DoS Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.101",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:06:51.876397",
+        "alert_type": "Malware Detected",
+        "severity": "critical",
+        "source_ip": "192.168.1.105",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:06:51.919226"
+  },
+  {
+    "timestamp": "2026-10-08T10:06:57.458571",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 46.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 53m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:06:57.457806",
+      "packets_per_sec": 1374
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:06:57.458554",
+        "alert_type": "DoS Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.101",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:06:57.458566",
+        "alert_type": "Malware Detected",
+        "severity": "critical",
+        "source_ip": "192.168.1.105",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:06:57.495915"
+  },
+  {
+    "timestamp": "2026-10-08T10:07:03.032342",
+    "metrics": {
+      "cpu": 0.0,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 49.6,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 53m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:07:03.031637",
+      "packets_per_sec": 526
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:07:03.085258"
+  },
+  {
+    "timestamp": "2026-10-08T10:10:45.699464",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 57m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:10:45.698707",
+      "packets_per_sec": 0
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:10:45.699447",
+        "alert_type": "DNS Flood Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.102",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:11:21.852554"
+  },
+  {
+    "timestamp": "2026-10-08T10:10:59.376560",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 57m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:10:59.375557",
+      "packets_per_sec": 0
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:11:22.084730"
+  },
+  {
+    "timestamp": "2026-10-08T10:11:20.407336",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.3,
+        "used_gb": 0.54,
+        "total_gb": 7.87
+      },
+      "temperature": 48.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 58m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:11:20.406250",
+      "packets_per_sec": 0
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:11:20.407314",
+        "alert_type": "Brute Force Attack",
+        "severity": "medium",
+        "source_ip": "192.168.1.104",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:11:20.407331",
+        "alert_type": "DDoS Attack",
+        "severity": "critical",
+        "source_ip": "192.168.1.100",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:11:22.613335"
+  },
+  {
+    "timestamp": "2026-10-08T10:11:28.149884",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.54,
+        "total_gb": 7.87
+      },
+      "temperature": 48.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 58m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:11:28.149184",
+      "packets_per_sec": 527
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:11:28.193133"
+  },
+  {
+    "timestamp": "2026-10-08T10:11:33.720424",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 58m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:11:33.720032",
+      "packets_per_sec": 1312
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:11:33.778904"
+  },
+  {
+    "timestamp": "2026-10-08T10:11:39.308044",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 58m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:11:39.307339",
+      "packets_per_sec": 1352
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:11:39.361445"
+  },
+  {
+    "timestamp": "2026-10-08T10:11:45.122015",
+    "metrics": {
+      "cpu": 2.0,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.54,
+        "total_gb": 7.87
+      },
+      "temperature": 48.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 58m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:11:45.121321",
+      "packets_per_sec": 1299
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:11:45.169287"
+  },
+  {
+    "timestamp": "2026-10-08T10:11:50.783109",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 58m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:11:50.782379",
+      "packets_per_sec": 1382
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:11:50.832594"
+  },
+  {
+    "timestamp": "2026-10-08T10:11:56.383446",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 49.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 58m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:11:56.383053",
+      "packets_per_sec": 1306
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:11:56.421925"
+  },
+  {
+    "timestamp": "2026-10-08T10:12:01.957716",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 58m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:12:01.957009",
+      "packets_per_sec": 1370
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:12:02.001107"
+  },
+  {
+    "timestamp": "2026-10-08T10:12:07.565534",
+    "metrics": {
+      "cpu": 2.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 49.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 58m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:12:07.564793",
+      "packets_per_sec": 1396
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:12:07.565522",
+        "alert_type": "DDoS Attack",
+        "severity": "critical",
+        "source_ip": "192.168.1.100",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:12:07.618080"
+  },
+  {
+    "timestamp": "2026-10-08T10:12:13.208831",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 58m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:12:13.208425",
+      "packets_per_sec": 1407
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:12:13.255904"
+  },
+  {
+    "timestamp": "2026-10-08T10:12:18.780528",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 59m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:12:18.779812",
+      "packets_per_sec": 1281
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:12:18.825272"
+  },
+  {
+    "timestamp": "2026-10-08T10:12:24.350837",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 59m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:12:24.350070",
+      "packets_per_sec": 1326
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:12:24.397006"
+  },
+  {
+    "timestamp": "2026-10-08T10:12:29.921945",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 59m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:12:29.921554",
+      "packets_per_sec": 1445
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:12:29.968347"
+  },
+  {
+    "timestamp": "2026-10-08T10:12:35.491147",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 47.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 59m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:12:35.490381",
+      "packets_per_sec": 1523
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:12:35.491131",
+        "alert_type": "Brute Force Attack",
+        "severity": "medium",
+        "source_ip": "192.168.1.104",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:12:35.491143",
+        "alert_type": "Malware Detected",
+        "severity": "critical",
+        "source_ip": "192.168.1.105",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:12:35.535974"
+  },
+  {
+    "timestamp": "2026-10-08T10:12:41.058404",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 59m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:12:41.057680",
+      "packets_per_sec": 1375
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:12:41.143851"
+  },
+  {
+    "timestamp": "2026-10-08T10:12:46.667537",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 48.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "1h 59m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:12:46.666829",
+      "packets_per_sec": 1389
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:12:46.714352"
+  },
+  {
+    "timestamp": "2026-10-08T10:28:07.644591",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.7,
+        "used_gb": 0.58,
+        "total_gb": 7.87
+      },
+      "temperature": 33.6,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 1m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:28:07.496388",
+      "packets_per_sec": 0
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:28:07.644566",
+        "alert_type": "Malware Detected",
+        "severity": "critical",
+        "source_ip": "192.168.1.105",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:28:07.644586",
+        "alert_type": "DDoS Attack",
+        "severity": "critical",
+        "source_ip": "192.168.1.100",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:28:07.713025"
+  },
+  {
+    "timestamp": "2026-10-08T10:28:13.199119",
+    "metrics": {
+      "cpu": 0.0,
+      "memory": {
+        "percent": 8.6,
+        "used_gb": 0.57,
+        "total_gb": 7.87
+      },
+      "temperature": 33.6,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 1m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:28:13.198680",
+      "packets_per_sec": 9
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:28:13.293955"
+  },
+  {
+    "timestamp": "2026-10-08T10:28:18.789313",
+    "metrics": {
+      "cpu": 0.0,
+      "memory": {
+        "percent": 8.6,
+        "used_gb": 0.57,
+        "total_gb": 7.87
+      },
+      "temperature": 34.8,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 1m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:28:18.788606",
+      "packets_per_sec": 1
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:28:18.932248"
+  },
+  {
+    "timestamp": "2026-10-08T10:28:24.420267",
+    "metrics": {
+      "cpu": 0.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 34.8,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 1m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "DISCONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:28:24.419581",
+      "packets_per_sec": 1
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:28:24.485779"
+  },
+  {
+    "timestamp": "2026-10-08T10:28:29.972112",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 34.8,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 1m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:28:29.971721",
+      "packets_per_sec": 1
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:28:30.086523"
+  },
+  {
+    "timestamp": "2026-10-08T10:28:35.582423",
+    "metrics": {
+      "cpu": 0.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 34.2,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 1m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:28:35.581718",
+      "packets_per_sec": 1
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:28:35.674405"
+  },
+  {
+    "timestamp": "2026-10-08T10:28:41.171421",
+    "metrics": {
+      "cpu": 0.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 34.2,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 1m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:28:41.170722",
+      "packets_per_sec": 1
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:28:41.355544"
+  },
+  {
+    "timestamp": "2026-10-08T10:28:46.861123",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 34.2,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 1m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:28:46.860429",
+      "packets_per_sec": 1
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:28:46.934452"
+  },
+  {
+    "timestamp": "2026-10-08T10:28:52.429333",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 34.8,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 1m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:28:52.428938",
+      "packets_per_sec": 1
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:28:52.604026"
+  },
+  {
+    "timestamp": "2026-10-08T10:28:58.099793",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 34.8,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 2m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:28:58.099093",
+      "packets_per_sec": 1
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:28:58.249436"
+  },
+  {
+    "timestamp": "2026-10-08T10:29:03.744983",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 34.8,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 2m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:29:03.744265",
+      "packets_per_sec": 1
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:29:03.881894"
+  },
+  {
+    "timestamp": "2026-10-08T10:29:09.386440",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 34.8,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 2m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:29:09.386031",
+      "packets_per_sec": 1578
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:29:09.448663"
+  },
+  {
+    "timestamp": "2026-10-08T10:29:14.944060",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 35.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 2m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:29:14.943346",
+      "packets_per_sec": 1420
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:29:15.009906"
+  },
+  {
+    "timestamp": "2026-10-08T10:29:20.521699",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 35.3,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 2m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:29:20.520950",
+      "packets_per_sec": 1432
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:29:20.521682",
+        "alert_type": "DDoS Attack",
+        "severity": "critical",
+        "source_ip": "192.168.1.100",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:29:20.521694",
+        "alert_type": "DNS Flood Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.102",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:29:20.586435"
+  },
+  {
+    "timestamp": "2026-10-08T10:29:26.099893",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.4,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 37.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 2m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:29:26.099500",
+      "packets_per_sec": 1442
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:29:26.157348"
+  },
+  {
+    "timestamp": "2026-10-08T10:29:31.671007",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 35.3,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 2m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:29:31.670317",
+      "packets_per_sec": 1430
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:29:31.725773"
+  },
+  {
+    "timestamp": "2026-10-08T10:29:37.227632",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 35.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 2m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:29:37.226941",
+      "packets_per_sec": 1382
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:29:37.282834"
+  },
+  {
+    "timestamp": "2026-10-08T10:29:42.782629",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 35.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 2m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:29:42.781903",
+      "packets_per_sec": 1406
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:29:42.782617",
+        "alert_type": "DNS Flood Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.102",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:29:42.839160"
+  },
+  {
+    "timestamp": "2026-10-08T10:29:48.355560",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 37.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 2m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:29:48.355159",
+      "packets_per_sec": 1408
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:29:48.411940"
+  },
+  {
+    "timestamp": "2026-10-08T10:29:53.918284",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 37.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 3m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:29:53.917600",
+      "packets_per_sec": 1392
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:29:53.973786"
+  },
+  {
+    "timestamp": "2026-10-08T10:29:59.495955",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 37.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 3m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:29:59.495263",
+      "packets_per_sec": 1379
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:29:59.552333"
+  },
+  {
+    "timestamp": "2026-10-08T10:30:05.057347",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 37.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 3m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:30:05.056944",
+      "packets_per_sec": 1422
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:30:05.109434"
+  },
+  {
+    "timestamp": "2026-10-08T10:30:10.628221",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 36.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 3m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:30:10.627519",
+      "packets_per_sec": 1312
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:30:10.681348"
+  },
+  {
+    "timestamp": "2026-10-08T10:30:16.197525",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 37.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 3m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:30:16.196810",
+      "packets_per_sec": 1410
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:30:16.250653"
+  },
+  {
+    "timestamp": "2026-10-08T10:30:21.770192",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 38.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 3m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:30:21.769793",
+      "packets_per_sec": 1390
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:30:21.823021"
+  },
+  {
+    "timestamp": "2026-10-08T10:30:27.333668",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.4,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 37.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 3m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:30:27.332977",
+      "packets_per_sec": 1430
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:30:27.390757"
+  },
+  {
+    "timestamp": "2026-10-08T10:30:32.901798",
+    "metrics": {
+      "cpu": 0.0,
+      "memory": {
+        "percent": 8.4,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 37.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 3m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:30:32.901094",
+      "packets_per_sec": 1477
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:30:32.959705"
+  },
+  {
+    "timestamp": "2026-10-08T10:30:38.466515",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.4,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 37.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 3m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:30:38.466127",
+      "packets_per_sec": 1379
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:30:38.516731"
+  },
+  {
+    "timestamp": "2026-10-08T10:30:44.032696",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 37.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 3m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:30:44.031985",
+      "packets_per_sec": 1334
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:30:44.086582"
+  },
+  {
+    "timestamp": "2026-10-08T10:30:49.613746",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 39.1,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 3m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:30:49.613054",
+      "packets_per_sec": 1368
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:30:49.669713"
+  },
+  {
+    "timestamp": "2026-10-08T10:30:55.181343",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 38.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 4m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:30:55.180600",
+      "packets_per_sec": 1306
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:30:55.181328",
+        "alert_type": "Port Scan",
+        "severity": "medium",
+        "source_ip": "192.168.1.103",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:30:55.236905"
+  },
+  {
+    "timestamp": "2026-10-08T10:31:00.751471",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 37.5,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 4m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:31:00.751081",
+      "packets_per_sec": 1359
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:31:00.806808"
+  },
+  {
+    "timestamp": "2026-10-08T10:31:06.314929",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.4,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 38.0,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 4m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:31:06.314233",
+      "packets_per_sec": 1350
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:31:06.365183"
+  },
+  {
+    "timestamp": "2026-10-08T10:31:11.875581",
+    "metrics": {
+      "cpu": 0.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 39.1,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 4m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:31:11.874879",
+      "packets_per_sec": 1326
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:31:11.930889"
+  },
+  {
+    "timestamp": "2026-10-08T10:31:17.448410",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 39.1,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 4m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:31:17.447957",
+      "packets_per_sec": 1361
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:31:17.448375",
+        "alert_type": "DNS Flood Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.102",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:31:17.448387",
+        "alert_type": "DDoS Attack",
+        "severity": "critical",
+        "source_ip": "192.168.1.100",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:31:17.501513"
+  },
+  {
+    "timestamp": "2026-10-08T10:31:23.026517",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 39.7,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 4m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:31:23.025823",
+      "packets_per_sec": 1342
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:31:23.093469"
+  },
+  {
+    "timestamp": "2026-10-08T10:31:28.610816",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 38.6,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 4m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:31:28.610130",
+      "packets_per_sec": 1405
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:31:28.661934"
+  },
+  {
+    "timestamp": "2026-10-08T10:31:34.184168",
+    "metrics": {
+      "cpu": 0.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 40.2,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 4m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:31:34.183780",
+      "packets_per_sec": 1424
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:31:34.250630"
+  },
+  {
+    "timestamp": "2026-10-08T10:31:39.781165",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 39.1,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 4m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:31:39.780442",
+      "packets_per_sec": 1332
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:31:39.781152",
+        "alert_type": "Brute Force Attack",
+        "severity": "medium",
+        "source_ip": "192.168.1.104",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:31:39.839885"
+  },
+  {
+    "timestamp": "2026-10-08T10:31:45.374629",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 39.1,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 4m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:31:45.373933",
+      "packets_per_sec": 1406
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:31:45.438883"
+  },
+  {
+    "timestamp": "2026-10-08T10:31:50.945770",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 40.2,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 4m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:31:50.945058",
+      "packets_per_sec": 1392
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:31:51.028816"
+  },
+  {
+    "timestamp": "2026-10-08T10:31:56.554978",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 39.7,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 5m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:31:56.554556",
+      "packets_per_sec": 1391
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:31:56.554967",
+        "alert_type": "DoS Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.101",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:31:56.622947"
+  },
+  {
+    "timestamp": "2026-10-08T10:32:02.143964",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 40.2,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 5m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:32:02.143291",
+      "packets_per_sec": 1380
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:32:02.203554"
+  },
+  {
+    "timestamp": "2026-10-08T10:32:07.721977",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 40.8,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 5m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:32:07.721275",
+      "packets_per_sec": 1466
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:32:07.787586"
+  },
+  {
+    "timestamp": "2026-10-08T10:32:13.297852",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.5,
+        "used_gb": 0.56,
+        "total_gb": 7.87
+      },
+      "temperature": 39.7,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 5m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:32:13.297408",
+      "packets_per_sec": 1424
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:32:13.297835",
+        "alert_type": "DDoS Attack",
+        "severity": "critical",
+        "source_ip": "192.168.1.100",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:32:13.297847",
+        "alert_type": "DoS Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.101",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:32:13.351822"
+  },
+  {
+    "timestamp": "2026-10-08T10:32:18.869949",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.54,
+        "total_gb": 7.87
+      },
+      "temperature": 39.1,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 5m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:32:18.869215",
+      "packets_per_sec": 1432
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:32:18.869933",
+        "alert_type": "Malware Detected",
+        "severity": "critical",
+        "source_ip": "192.168.1.105",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:32:18.869945",
+        "alert_type": "Brute Force Attack",
+        "severity": "medium",
+        "source_ip": "192.168.1.104",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:32:18.920843"
+  },
+  {
+    "timestamp": "2026-10-08T10:32:24.453282",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.54,
+        "total_gb": 7.87
+      },
+      "temperature": 39.7,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 5m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:32:24.452585",
+      "packets_per_sec": 1346
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:32:24.509808"
+  },
+  {
+    "timestamp": "2026-10-08T10:32:30.035570",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 39.1,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 5m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:32:30.035178",
+      "packets_per_sec": 1359
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:32:30.090566"
+  },
+  {
+    "timestamp": "2026-10-08T10:32:35.609467",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.2,
+        "used_gb": 0.54,
+        "total_gb": 7.87
+      },
+      "temperature": 41.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 5m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:32:35.608794",
+      "packets_per_sec": 1327
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:32:35.682231"
+  },
+  {
+    "timestamp": "2026-10-08T10:32:41.197048",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 40.2,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 5m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:32:41.196336",
+      "packets_per_sec": 1318
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:32:41.253993"
+  },
+  {
+    "timestamp": "2026-10-08T10:32:46.776676",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 41.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 5m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:32:46.776205",
+      "packets_per_sec": 1341
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:32:46.776660",
+        "alert_type": "Brute Force Attack",
+        "severity": "medium",
+        "source_ip": "192.168.1.104",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:32:46.776671",
+        "alert_type": "Malware Detected",
+        "severity": "critical",
+        "source_ip": "192.168.1.105",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:32:46.828758"
+  },
+  {
+    "timestamp": "2026-10-08T10:32:52.357738",
+    "metrics": {
+      "cpu": 0.5,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 40.2,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 5m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:32:52.356994",
+      "packets_per_sec": 1413
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:32:52.357725",
+        "alert_type": "DNS Flood Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.102",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:32:52.415335"
+  },
+  {
+    "timestamp": "2026-10-08T10:32:57.937977",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 40.2,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 6m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:32:57.937237",
+      "packets_per_sec": 1387
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:32:57.937961",
+        "alert_type": "DDoS Attack",
+        "severity": "critical",
+        "source_ip": "192.168.1.100",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:32:57.937972",
+        "alert_type": "Brute Force Attack",
+        "severity": "medium",
+        "source_ip": "192.168.1.104",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:32:57.999323"
+  },
+  {
+    "timestamp": "2026-10-08T10:33:03.521529",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 40.8,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 6m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:33:03.520826",
+      "packets_per_sec": 1462
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:33:03.589498"
+  },
+  {
+    "timestamp": "2026-10-08T10:33:09.125276",
+    "metrics": {
+      "cpu": 0.0,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 41.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 6m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:33:09.124843",
+      "packets_per_sec": 1390
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:33:09.125264",
+        "alert_type": "Malware Detected",
+        "severity": "critical",
+        "source_ip": "192.168.1.105",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:33:09.178673"
+  },
+  {
+    "timestamp": "2026-10-08T10:33:14.695137",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.54,
+        "total_gb": 7.87
+      },
+      "temperature": 41.4,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 6m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:33:14.694456",
+      "packets_per_sec": 1449
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:33:14.749792"
+  },
+  {
+    "timestamp": "2026-10-08T10:33:20.263229",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 41.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 6m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:33:20.262503",
+      "packets_per_sec": 1415
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:33:20.263213",
+        "alert_type": "DDoS Attack",
+        "severity": "critical",
+        "source_ip": "192.168.1.100",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:33:20.263224",
+        "alert_type": "Malware Detected",
+        "severity": "critical",
+        "source_ip": "192.168.1.105",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:33:20.321109"
+  },
+  {
+    "timestamp": "2026-10-08T10:34:18.392728",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 41.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 7m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:34:18.392072",
+      "packets_per_sec": 1064
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:34:21.614317"
+  },
+  {
+    "timestamp": "2026-10-08T10:35:10.865370",
+    "metrics": {
+      "cpu": 1.5,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 41.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 8m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:35:10.864293",
+      "packets_per_sec": 1202
+    },
+    "alerts": [
+      {
+        "timestamp": "2026-10-08T10:35:10.865350",
+        "alert_type": "DNS Flood Attack",
+        "severity": "high",
+        "source_ip": "192.168.1.102",
+        "destination_ip": "192.168.1.1"
+      },
+      {
+        "timestamp": "2026-10-08T10:35:10.865365",
+        "alert_type": "Port Scan",
+        "severity": "medium",
+        "source_ip": "192.168.1.103",
+        "destination_ip": "192.168.1.1"
+      }
+    ],
+    "received_at": "2026-10-08T10:35:11.843355"
+  },
+  {
+    "timestamp": "2026-10-08T10:35:17.376290",
+    "metrics": {
+      "cpu": 1.0,
+      "memory": {
+        "percent": 8.1,
+        "used_gb": 0.53,
+        "total_gb": 7.87
+      },
+      "temperature": 41.9,
+      "disk": {
+        "percent": 28.3,
+        "used_gb": 7.61,
+        "total_gb": 28.09
+      },
+      "uptime": "0h 8m",
+      "network_status": "CONNECTED",
+      "usb_status": {
+        "usb1": "CONNECTED",
+        "usb2": "DISCONNECTED",
+        "usb3": "DISCONNECTED",
+        "usb4": "DISCONNECTED"
+      },
+      "timestamp": "2026-10-08T10:35:17.375886",
+      "packets_per_sec": 562
+    },
+    "alerts": [],
+    "received_at": "2026-10-08T10:35:18.651609"
+  }
+]
